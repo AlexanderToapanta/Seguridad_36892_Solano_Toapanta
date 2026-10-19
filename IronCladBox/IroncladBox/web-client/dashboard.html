@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - IroncladBox CrossFit</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/calendar.css">
+    <link rel="stylesheet" href="/css/ejercicios.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/img/logo.jpeg" alt="CrossFit Logo" class="sidebar-logo">
+            <h2>IRONCLAD<span>BOX</span></h2>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <!-- Se cargara dinamicamente segun el rol -->
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-secondary btn-block" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesion
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <!-- Top Bar -->
+        <header class="dashboard-header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="user-info">
+                <div class="user-profile-image" id="userProfileImageContainer">
+                    <img src="/img/default-avatar.png" alt="Perfil" id="userProfileImage" class="profile-avatar">
+                    <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+                    <button class="profile-image-upload-btn" id="uploadImageBtn" title="Cambiar foto de perfil">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="user-details">
+                    <span id="userName">Usuario</span>
+                    <span class="user-role" id="userRole">ROL</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area" id="contentArea">
+            <h1>Cargando...</h1>
+        </div>
+    </main>
+
+    <script src="/config.js"></script>
+    <script src="https://cdn.socket.io/4.8.3/socket.io.min.js"></script>
+    <script src="/js/secure-storage.js?v=2"></script>
+    <script src="/js/socket.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/dashboard.js?v=2"></script>
+</body>
+</html>

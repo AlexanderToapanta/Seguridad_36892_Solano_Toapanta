@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - IroncladBox CrossFit</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box auth-box-wide">
+            <div class="auth-header">
+                <h1>IRONCLAD<span>BOX</span></h1>
+                <p>Crea tu cuenta</p>
+            </div>
+            <form id="registerForm" class="auth-form" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido *</label>
+                        <input type="text" id="apellido" name="apellido" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contrasena *</label>
+                    <input type="password" id="password" name="password" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Direccion</label>
+                    <input type="text" id="direccion" name="direccion">
+                </div>
+                <div class="form-group">
+                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="peso">Peso (kg)</label>
+                        <input type="number" id="peso" name="peso" step="0.1" min="20" max="300">
+                    </div>
+                    <div class="form-group">
+                        <label for="altura">Altura (m)</label>
+                        <input type="number" id="altura" name="altura" step="0.01" min="0.5" max="2.5">
+                    </div>
+                </div>
+                <h3>Selecciona una Membresia</h3>
+                <input type="hidden" id="id_membresia" name="id_membresia">
+                <div id="membershipCards" class="membership-cards-container"></div>
+                <div id="registerMessage" class="auth-message"></div>
+                <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+            </form>
+            <div class="auth-footer">
+                <p>Ya tienes cuenta? <a href="/login.html">Inicia Sesion</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="/config.js"></script>
+    <script src="/js/secure-storage.js?v=2"></script>
+    <script src="/js/auth.js?v=2"></script>
+</body>
+</html>

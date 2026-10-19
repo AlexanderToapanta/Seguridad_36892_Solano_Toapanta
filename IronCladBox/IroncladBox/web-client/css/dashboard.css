@@ -1,0 +1,1542 @@
+/* ===============================================
+   ESTILOS DEL DASHBOARD
+   =============================================== */
+.dashboard-page {
+    display: flex;
+    min-height: 100vh;
+    background: var(--gray-light);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.sidebar-header {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-dark);
+}
+
+.sidebar-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+}
+
+.sidebar-header h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.sidebar-header span {
+    color: var(--primary-color);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 1rem 0;
+}
+
+.nav-item {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border-left: 4px solid transparent;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+.nav-item.active {
+    background: rgba(255, 59, 48, 0.2);
+    border-left-color: var(--primary-color);
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    width: 20px;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--gray-dark);
+}
+
+/* Tabs */
+.tabs-container {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    color: #e63946;
+}
+
+.tab-btn.active {
+    color: #e63946;
+    border-bottom-color: #e63946;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Main Content */
+.dashboard-content {
+    flex: 1;
+    margin-left: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header {
+    background: var(--text-light);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-profile-image {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(255, 59, 48, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.5);
+}
+
+.profile-image-upload-btn {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image-upload-btn:hover {
+    background: #FF2D1F;
+    transform: scale(1.1);
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.user-info span {
+    font-weight: 600;
+}
+
+.user-role {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Content Area */
+.content-area {
+    flex: 1;
+    padding: 2rem;
+}
+
+.dashboard-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+}
+
+/* Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: var(--text-light);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.card-icon i {
+    font-size: 1.8rem;
+    color: var(--text-light);
+}
+
+.card-value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.card-label {
+    color: var(--gray-medium);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Tables */
+.data-table-container {
+    background: var(--text-light);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background: var(--gray-light);
+}
+
+.data-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--gray-dark);
+}
+
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.data-table tbody tr:hover {
+    background: var(--gray-light);
+}
+
+.badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.btn-icon {
+    padding: 0.5rem 0.8rem;
+}
+
+/* Forms in Dashboard */
+.dashboard-form {
+    background: var(--text-light);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .dashboard-content {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--gray-light);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   ESTILOS PARA PANEL DE ADMINISTRACIÓN
+======================================== */
+
+/* Admin Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Table Filter */
+.table-filter {
+    margin: 20px 0;
+}
+
+.table-filter input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid var(--gray-dark);
+    border-radius: 8px;
+    background: var(--text-light);
+    transition: var(--transition);
+}
+
+.table-filter input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+}
+
+/* Tables Container - VERSION 2 CON SCROLL */
+.table-container {
+    background: var(--text-light);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    max-width: 100%;
+    position: relative;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+.admin-table thead {
+    background: var(--secondary-color);
+}
+
+.admin-table th {
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-light);
+    border-bottom: 2px solid var(--primary-color);
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+/* ===== ATLETAS: 11 columnas ===== */
+#athletesTableBody { font-size: 13px; }
+table:has(#athletesTableBody) th:nth-child(1) { width: 3%; }   /* ID */
+table:has(#athletesTableBody) th:nth-child(2) { width: 10%; }  /* Nombre */
+table:has(#athletesTableBody) th:nth-child(3) { width: 10%; }  /* Apellido */
+table:has(#athletesTableBody) th:nth-child(4) { width: 14%; }  /* Email */
+table:has(#athletesTableBody) th:nth-child(5) { width: 7%; }   /* Telefono */
+table:has(#athletesTableBody) th:nth-child(6) { width: 9%; }   /* Membresia */
+table:has(#athletesTableBody) th:nth-child(7) { width: 7%; }   /* Fecha Inicio */
+table:has(#athletesTableBody) th:nth-child(8) { width: 7%; }   /* Fecha Fin */
+table:has(#athletesTableBody) th:nth-child(9) { width: 7%; }   /* Vigencia */
+table:has(#athletesTableBody) th:nth-child(10) { width: 6%; }  /* Estado */
+table:has(#athletesTableBody) th:nth-child(11) { width: 20%; } /* Acciones */
+
+/* ===== ENTRENADORES: 9 columnas ===== */
+table:has(#trainersTableBody) th:nth-child(1) { width: 3%; }   /* ID */
+table:has(#trainersTableBody) th:nth-child(2) { width: 10%; }  /* Nombre */
+table:has(#trainersTableBody) th:nth-child(3) { width: 10%; }  /* Apellido */
+table:has(#trainersTableBody) th:nth-child(4) { width: 14%; }  /* Email */
+table:has(#trainersTableBody) th:nth-child(5) { width: 7%; }   /* Telefono */
+table:has(#trainersTableBody) th:nth-child(6) { width: 12%; }  /* Especialidad */
+table:has(#trainersTableBody) th:nth-child(7) { width: 6%; }   /* Exp */
+table:has(#trainersTableBody) th:nth-child(8) { width: 8%; }   /* Estado */
+table:has(#trainersTableBody) th:nth-child(9) { width: 30%; }  /* Acciones */
+
+/* ===== MEMBRESIAS: 8 columnas ===== */
+table:has(#membershipsTableBody) th:nth-child(1) { width: 3%; }   /* ID */
+table:has(#membershipsTableBody) th:nth-child(2) { width: 11%; }  /* Nombre */
+table:has(#membershipsTableBody) th:nth-child(3) { width: 16%; }  /* Descripcion */
+table:has(#membershipsTableBody) th:nth-child(4) { width: 7%; }   /* Precio */
+table:has(#membershipsTableBody) th:nth-child(5) { width: 7%; }   /* Duracion */
+table:has(#membershipsTableBody) th:nth-child(6) { width: 16%; }  /* Beneficios */
+table:has(#membershipsTableBody) th:nth-child(7) { width: 7%; }   /* Estado */
+table:has(#membershipsTableBody) th:nth-child(8) { width: 33%; }  /* Acciones */
+
+/* Forzar visibilidad de columnas Estado y Acciones en membresias */
+#membershipsTableBody td:nth-child(7),
+#membershipsTableBody td:nth-child(8),
+#membershipsTableBody th:nth-child(7),
+#membershipsTableBody th:nth-child(8) {
+    overflow: visible !important;
+    min-width: 60px;
+}
+
+/* Evitar que columna Beneficios expanda la tabla */
+#membershipsTableBody td:nth-child(6) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== CLASES: 10 columnas ===== */
+table:has(#classesTableBody) th:nth-child(1) { width: 3%; }   /* ID */
+table:has(#classesTableBody) th:nth-child(2) { width: 10%; }  /* Nombre */
+table:has(#classesTableBody) th:nth-child(3) { width: 14%; }  /* Descripcion */
+table:has(#classesTableBody) th:nth-child(4) { width: 7%; }   /* Fecha */
+table:has(#classesTableBody) th:nth-child(5) { width: 5%; }   /* Hora */
+table:has(#classesTableBody) th:nth-child(6) { width: 12%; }  /* Entrenador */
+table:has(#classesTableBody) th:nth-child(7) { width: 5%; }   /* Cupo */
+table:has(#classesTableBody) th:nth-child(8) { width: 6%; }   /* Inscritos */
+table:has(#classesTableBody) th:nth-child(9) { width: 7%; }   /* Estado */
+table:has(#classesTableBody) th:nth-child(10) { width: 31%; } /* Acciones */
+
+.admin-table td {
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--gray-light);
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+}
+
+.admin-table tbody tr {
+    transition: background 0.2s;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-table .loading,
+.admin-table .no-data,
+.admin-table .error {
+    text-align: center;
+    padding: 30px;
+    color: #95a5a6;
+    font-style: italic;
+}
+
+.admin-table .error {
+    color: var(--danger-color, #c0392b);
+}
+
+/* Action Buttons */
+.actions {
+    white-space: nowrap;
+    min-width: 130px;
+}
+
+.admin-table td.actions {
+    overflow: visible;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    margin: 0 2px;
+    font-size: 12px;
+}
+
+.btn-edit {
+    background: #3498db;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+.btn-delete {
+    background: var(--danger-color, #c0392b);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #a93226;
+    transform: scale(1.1);
+}
+
+.btn-success {
+    background: var(--success-color, #27ae60);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #229954;
+    transform: scale(1.1);
+}
+
+/* Badges */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-success {
+    background: var(--success-color, #27ae60);
+    color: white;
+}
+
+.badge-danger {
+    background: var(--danger-color, #c0392b);
+    color: white;
+}
+
+.badge-warning {
+    background: var(--warning-color, #f39c12);
+    color: white;
+}
+
+/* Table Column Specific Styles */
+.admin-table td:nth-child(3) {
+    /* Email column */
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-table td:last-child {
+    /* Actions column - always visible */
+    position: sticky;
+    right: 0;
+    background: inherit;
+    z-index: 1;
+}
+
+.admin-table tbody tr:hover td:last-child {
+    background: #f8f9fa;
+}
+
+/* Quick Actions */
+.quick-actions {
+    background: var(--text-light);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.quick-actions h2 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 1.3rem;
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 15px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   MODAL STYLES
+======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: var(--text-light);
+    margin: 50px auto;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.modal-header h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #95a5a6;
+    cursor: pointer;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.close:hover {
+    color: var(--primary-color);
+}
+
+.modal form {
+    padding: 25px;
+}
+
+/* ========================================
+   FORM STYLES
+======================================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid var(--gray-light);
+    border-radius: 5px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-light);
+    margin-top: 20px;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    padding: 12px 24px;
+    background: #7f8c8d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #95a5a6;
+}
+
+/* ========================================
+   ESTILOS PARA MÓDULO DE PROGRESO
+======================================== */
+.progress-container {
+    padding: 20px;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.progress-search {
+    margin-bottom: 20px;
+}
+
+.progress-search input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--gray-light);
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.progress-search input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.progress-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.progress-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.progress-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.progress-card-header {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: white;
+}
+
+.progress-card-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid white;
+}
+
+.progress-card-img-placeholder {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    border: 3px solid white;
+    font-size: 2rem;
+}
+
+.progress-card-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.progress-card-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.progress-card-body {
+    padding: 20px;
+}
+
+.marca-display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.marca-label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.marca-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.marca-value.has-marca {
+    color: var(--primary-color);
+}
+
+.marca-value.no-marca {
+    color: #95a5a6;
+    font-size: 1.2rem;
+}
+
+.marca-fecha {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.btn-register-marca {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-register-marca:hover {
+    background: #2c5282;
+}
+
+.btn-register-marca i {
+    font-size: 1.1rem;
+}
+
+/* Modal para registrar marca */
+.exercise-modal-info {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.exercise-modal-info i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.exercise-modal-info h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+}
+
+.exercise-modal-info .marca-anterior {
+    margin: 10px 0 0 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS FOR ADMIN
+======================================== */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .table-container {
+        padding: 15px;
+    }
+
+    .admin-table {
+        font-size: 0.9rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+/* ========================================
+   CREAR WOD - ESTILOS MEJORADOS
+======================================== */
+.wod-create-container {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.wod-form-enhanced {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-section {
+    background: #F2F2F7;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.08);
+}
+
+.section-title {
+    color: #FF3B30;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #FF3B30;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    font-size: 1.2rem;
+}
+
+.section-description {
+    color: #1C1C1E;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-left: 4px solid #FF3B30;
+    border-radius: 5px;
+}
+
+.wod-form-enhanced .form-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1C1C1E;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.wod-form-enhanced .form-group label i {
+    color: #FF3B30;
+    font-size: 0.9rem;
+}
+
+.wod-form-enhanced .form-group input,
+.wod-form-enhanced .form-group textarea,
+.wod-form-enhanced .form-group select {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    background: white;
+}
+
+.wod-form-enhanced .form-group input:focus,
+.wod-form-enhanced .form-group textarea:focus,
+.wod-form-enhanced .form-group select:focus {
+    border-color: #FF3B30;
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+    outline: none;
+}
+
+.wod-form-enhanced .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+}
+
+.horario-item {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.horario-item:hover {
+    border-color: #FF3B30;
+    box-shadow: 0 2px 12px rgba(255, 59, 48, 0.15);
+    transform: translateY(-2px);
+}
+
+.horario-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.btn-add-horario {
+    padding: 12px 24px;
+    background: #FF9500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
+}
+
+.btn-add-horario:hover {
+    background: #FF8C00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e9ecef;
+}
+
+.btn-submit-wod {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: #FF3B30;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+    transition: all 0.3s ease;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-submit-wod:hover {
+    background: #E5342A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 59, 48, 0.5);
+}
+
+.btn-submit-wod:active {
+    transform: translateY(0);
+}
+
+.btn-icon.btn-delete {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon.btn-delete:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos responsivos para el formulario WOD */
+@media (max-width: 992px) {
+    .horario-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .horario-row .form-group:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .wod-form-enhanced {
+        padding: 1.5rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .horario-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions .btn-submit-wod {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+/* ========================================
+   ESTILOS ESPEC�FICOS GESTI�N DE ATLETAS
+======================================== */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.table-filter {
+    margin-bottom: 1.5rem;
+}
+
+.table-filter input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.table-filter input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+}
+
+/* Mejoras al modal de atletas */
+#athleteModal .modal-content,
+#membershipAssignModal .modal-content {
+    max-width: 650px;
+}
+
+#athleteModal .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+#athleteModal .form-group label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive para tabla de atletas */
+@media (max-width: 1200px) {
+    .admin-table {
+        font-size: 12px;
+    }
+    
+    .admin-table th,
+    .admin-table td {
+        padding: 6px 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .admin-header .btn-primary {
+        width: 100%;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 900px;
+    }
+}
+
+/* Clases de utilidad para tabla de atletas */
+.text-muted {
+    color: #999 !important;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.phone-cell {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Mejoras visuales para la tabla de atletas */
+.admin-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.admin-table td {
+    vertical-align: middle;
+}
+
+.admin-table .actions {
+    white-space: nowrap;
+    min-width: 130px;
+    text-align: center;
+}
+
+.admin-table .actions .btn-icon {
+    margin: 0 2px;
+    display: inline-flex;
+}
+
+/* Evitar que display:flex rompa el td.actions */
+.admin-table td.actions {
+    display: table-cell;
+    overflow: visible !important;
+}
+
+/* Estilo para badges mejorado */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* Iconos en botones */
+.btn-icon i {
+    font-size: 14px;
+}
+
+/* Scroll horizontal suave en m�viles */
+.table-container {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Bot�n de eliminar (rojo) */
+.btn-danger,
+.btn-icon.btn-danger {
+    background: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover,
+.btn-icon.btn-danger:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}

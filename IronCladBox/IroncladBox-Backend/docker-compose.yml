@@ -1,0 +1,50 @@
+services:
+  # Base de datos PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: ironcladbox-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ironcladbox_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database:/db-scripts:ro
+      - ./database/postgres-init:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Aplicación Node.js
+  ironcladbox-app:
+    build: .
+    container_name: ironcladbox-crossfit
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=ironcladbox_db
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+      - JWT_SECRET=crossfit_ironcladbox_secret_key_2026
+      - JWT_EXPIRES_IN=24h
+      - SESSION_SECRET=ironcladbox_session_secret_2026
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    command: npm run dev
+
+volumes:
+  postgres_data:

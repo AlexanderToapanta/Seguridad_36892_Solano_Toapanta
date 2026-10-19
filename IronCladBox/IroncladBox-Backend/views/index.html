@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IroncladBox CrossFit - El mejor gimnasio de CrossFit en Quito, Ecuador. Entrena con los mejores coaches y alcanza tus objetivos.">
+    
+    <title>IroncladBox CrossFit - Quito, Ecuador</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo-link">
+                    <div class="logo">
+                        <img src="/img/logo.jpeg" alt="IroncladBox Logo" class="logo-img">
+                        <h1>IRONCLAD<span>BOX</span></h1>
+                    </div>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#about" class="nav-link">Nosotros</a></li>
+                    <li><a href="#classes" class="nav-link">Clases</a></li>
+                    <li><a href="#trainers" class="nav-link">Entrenadores</a></li>
+                    <li><a href="#memberships" class="nav-link">Membresías</a></li>
+                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li><a href="/login" class="btn-login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-subtitle">BIENVENIDO A</h2>
+            <h1 class="hero-title">IRONCLADBOX</h1>
+            <p class="hero-description">FORJANDO ATLETAS EN EL CORAZÓN DE QUITO</p>
+            <div class="hero-buttons">
+                <a href="#memberships" class="btn btn-primary">COMENZAR AHORA</a>
+                <a href="#about" class="btn btn-secondary">CONOCE MÁS</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">SOBRE NOSOTROS</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>EL MEJOR CROSSFIT DE QUITO</h3>
+                    <p>IroncladBox es más que un gimnasio, es una comunidad dedicada a transformar vidas a través del fitness funcional. Ubicados en el corazón de Quito, ofrecemos un ambiente de entrenamiento de clase mundial con coaches certificados y programación de primer nivel.</p>
+                    <p>Nuestras instalaciones cuentan con el mejor equipo y un ambiente motivador donde atletas de todos los niveles pueden alcanzar sus objetivos.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-dumbbell"></i>
+                            <h4>Equipo Premium</h4>
+                            <p>Instalaciones de primer nivel</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h4>Comunidad</h4>
+                            <p>Ambiente motivador y familiar</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-certificate"></i>
+                            <h4>Coaches Certificados</h4>
+                            <p>Entrenadores experimentados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3 class="stat-number" data-target="60">0</h3>
+                        <p>Atletas Activos</p>
+                    </div>
+                    <div class="stat">
+                        <h3 class="stat-number" data-target="2">0</h3>
+                        <p>Años de Experiencia</p>
+                    </div>
+                    <div class="stat">
+                        <h3 class="stat-number" data-target="50">0</h3>
+                        <p>Clases Semanales</p>
+                    </div>
+                    <div class="stat">
+                        <h3 class="stat-number" data-target="2">0</h3>
+                        <p>Coaches Expertos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="classes" id="classes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NUESTRAS CLASES</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Clases diseñadas para todos los niveles</p>
+                <p class="section-description">Y mucho más.....</p>
+            </div>
+            <div class="classes-grid" id="classesGrid">
+                <!-- Las clases se cargarán dinámicamente -->
+                <div class="loading">Cargando clases...</div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section class="trainers" id="trainers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NUESTRO EQUIPO</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Coaches certificados y apasionados</p>
+            </div>
+            <div class="trainers-grid" id="trainersGrid">
+                <!-- Los entrenadores se cargarán dinámicamente -->
+                <div class="loading">Cargando entrenadores...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memberships Section -->
+    <section class="memberships" id="memberships">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MEMBRESÍAS</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Elige el plan que mejor se adapte a ti</p>
+            </div>
+            <div class="memberships-grid" id="membershipsGrid">
+                <!-- Las membresías se cargarán dinámicamente -->
+                <div class="loading">Cargando membresías...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CONTÁCTANOS</h2>
+                <div class="title-underline"></div>
+                <p class="section-description">Estamos aquí para ayudarte a comenzar tu journey</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Encuéntranos</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Quito, Ecuador</p>
+                            <a href="https://maps.app.goo.gl/pRFAxbzsCvii74r8A" target="_blank" class="map-link">Ver en Google Maps</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+593 99 666 6672</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@ironcladbox.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horarios</h4>
+                            <p>Lun - Vie: 06:00 - 21:00</p>
+                            <p>Sábado: 08:00 - 14:00</p>
+                            <p>Domingo: Cerrado</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Envíanos un mensaje</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" id="phone" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" rows="5" placeholder="Mensaje (mín. 10 caracteres)" required minlength="10" maxlength="1000"></textarea>
+                        </div>
+                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary">ENVIAR MENSAJE</button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127698.74683582788!2d-78.56619638203126!3d-0.18059985000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a4002427c9f%3A0x4d4f5f3e1e8e0c0e!2sQuito!5e0!3m2!1ses!2sec!4v1234567890123!5m2!1ses!2sec" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>IRONCLADBOX</h3>
+                    <p>Forjando atletas desde 2024</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#classes">Clases</a></li>
+                        <li><a href="#memberships">Membresías</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <p>Lunes - Viernes: 06:00 - 21:00</p>
+                    <p>Sábado: 08:00 - 14:00</p>
+                    <p>Domingo: Cerrado</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IroncladBox CrossFit. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    var msg = document.getElementById('message');
+                    var honeypot = document.getElementById('website');
+
+                    if (honeypot && honeypot.value.trim() !== '') {
+                        e.preventDefault();
+                        return;
+                    }
+
+                    var errors = [];
+                    if (msg && msg.value.trim().length < 10) {
+                        errors.push('El mensaje debe tener al menos 10 caracteres');
+                    }
+
+                    if (errors.length > 0) {
+                        e.preventDefault();
+                        var formMsg = document.getElementById('formMessage');
+                        if (formMsg) {
+                            formMsg.innerHTML = '<p style="color:#e74c3c;">' + errors.join('<br>') + '</p>';
+                            formMsg.style.display = 'block';
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
