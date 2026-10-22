@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-22T00:00:30.621Z",
+  "results": {
+    "sca": {
+      "status": "FAIL",
+      "summary": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 7,
+        "critical": 1,
+        "total": 11
+      },
+      "details": "Vulnerabilidades detectadas mediante npm audit"
+    },
+    "test_bfla": {
+      "status": "PASS",
+      "code": 401
+    },
+    "test_param_injection": {
+      "status": "PASS"
+    },
+    "test_security_headers": {
+      "status": "PASS"
+    }
+  }
+}

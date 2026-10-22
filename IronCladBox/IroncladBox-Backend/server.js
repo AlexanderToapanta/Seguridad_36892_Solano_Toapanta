@@ -12,6 +12,14 @@ const { pool } = require('./config/database');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware de seguridad: Cabeceras defensivas HTTP
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '0');
+  next();
+});
+
 // Middleware
 app.use(cors({
   origin: true,

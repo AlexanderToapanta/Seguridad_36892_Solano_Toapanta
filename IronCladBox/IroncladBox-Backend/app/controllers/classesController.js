@@ -30,8 +30,17 @@ const classesController = {
   getClassById: async (req, res) => {
     try {
       const { id } = req.params;
-      const classData = await ClaseModel.findById(id);
-      
+      const classId = parseInt(id, 10);
+
+      if (isNaN(classId) || !/^\d+$/.test(String(id).trim())) {
+        return res.status(400).json({
+          success: false,
+          message: 'Identificador de clase inválido. Debe ser un número entero.'
+        });
+      }
+
+      const classData = await ClaseModel.findById(classId);
+
       if (!classData) {
         return res.status(404).json({
           success: false,
@@ -46,8 +55,7 @@ const classesController = {
     } catch (error) {
       res.status(500).json({
         success: false,
-        message: 'Error al obtener la clase',
-        error: error.message
+        message: 'Error al obtener la clase'
       });
     }
   },
@@ -94,20 +102,20 @@ const classesController = {
       }
 
       console.log('📅 [ENTRENADOR] Validando horario:', { id_entrenador, fecha, hora });
-      
+
       // Verificar choque de horarios
       const conflict = await ClaseModel.checkScheduleConflict(id_entrenador, fecha, hora);
       if (conflict) {
         console.log('⚠️ [ENTRENADOR] Conflicto detectado:', conflict);
-        return res.status(400).json({ 
-          success: false, 
-          message: `Ya tienes una clase programada el ${fecha} a las ${hora.substring(0, 5)}. Clase: "${conflict.nombre}"` 
+        return res.status(400).json({
+          success: false,
+          message: `Ya tienes una clase programada el ${fecha} a las ${hora.substring(0, 5)}. Clase: "${conflict.nombre}"`
         });
       }
-      
+
       console.log('✅ [ENTRENADOR] Sin conflictos, creando clase...');
       const newClass = await ClaseModel.create(classData);
-      
+
       res.status(201).json({
         success: true,
         message: 'Clase creada exitosamente',
@@ -128,20 +136,20 @@ const classesController = {
     try {
       const { id } = req.params;
       const { id_entrenador, fecha, hora } = req.body;
-      
+
       // Verificar choque de horarios (excluyendo la clase actual)
       if (id_entrenador && fecha && hora) {
         const conflict = await ClaseModel.checkScheduleConflict(id_entrenador, fecha, hora, id);
         if (conflict) {
-          return res.status(400).json({ 
-            success: false, 
-            message: `El entrenador ya tiene una clase programada el ${fecha} a las ${hora.substring(0, 5)}. Clase: "${conflict.nombre}"` 
+          return res.status(400).json({
+            success: false,
+            message: `El entrenador ya tiene una clase programada el ${fecha} a las ${hora.substring(0, 5)}. Clase: "${conflict.nombre}"`
           });
         }
       }
-      
+
       const updatedClass = await ClaseModel.update(id, req.body);
-      
+
       res.json({
         success: true,
         message: 'Clase actualizada exitosamente',
@@ -161,7 +169,7 @@ const classesController = {
     try {
       const { id } = req.params;
       await ClaseModel.delete(id);
-      
+
       res.json({
         success: true,
         message: 'Clase eliminada exitosamente'
@@ -313,7 +321,7 @@ const classesController = {
 
       const { id_atleta } = result.rows[0];
       console.log('ID Atleta:', id_atleta);
-      
+
       const classes = await InscripcionModel.findByAtleta(id_atleta);
       console.log(`✅ Clases encontradas: ${classes.length}`);
       console.log('Clases:', classes);
@@ -329,7 +337,8 @@ const classesController = {
         message: 'Error al obtener tus clases',
         error: error.message
       });
-    }  },
+    }
+  },
 
   // Eliminar clases vencidas (tarea de mantenimiento)
   deleteExpiredClasses: async (req, res) => {
@@ -350,7 +359,8 @@ const classesController = {
         message: 'Error al eliminar clases vencidas',
         error: error.message
       });
-    }  }
+    }
+  }
 };
 
 module.exports = classesController;
